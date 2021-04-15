@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.sainjo.gooodhavi.statistics.StatisticsMapper">
+	<select id="getMyPreviousHabits"
+		parameterType="com.sainjo.gooodhavi.habit.Habit"
+		resultType="com.sainjo.gooodhavi.habit.Habit">
+		select * from habit_habit
+		where h_nickname = #{h_nickname}
+		and h_status != 'N'
+		order by h_start_date desc
+	</select>
+
+	<select id="getAllHabits"
+		parameterType="com.sainjo.gooodhavi.habit.Habit"
+		resultType="com.sainjo.gooodhavi.habit.Habit">
+		select * from habit_habit where h_nickname != #{h_nickname}
+		and h_status != 'N'
+	</select>
+
+	<select id="getMyHabitByNick"
+		parameterType="com.sainjo.gooodhavi.member.Member"
+		resultType="com.sainjo.gooodhavi.habit.Habit">
+		select * from habit_habit 
+		where h_nickname = #{h_nickname}
+		and h_status != 'N'
+	</select>
+
+	<select id="countPreviousHabits" parameterType="com.sainjo.gooodhavi.habit.Habit"
+	resultType="int">
+		select count(*) from habit_habit 
+		where h_nickname = #{h_nickname}
+		and h_status != 'N'
+	</select>
+</mapper> 

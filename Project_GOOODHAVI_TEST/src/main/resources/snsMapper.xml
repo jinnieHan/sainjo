@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sainjo.gooodhavi.sns.SNSMapper">
+	<delete id="deleteMsg"
+		parameterType="com.sainjo.gooodhavi.sns.SNSMsg">
+		delete from habit_sns
+		where ds_no = #{hs_no}
+	</delete>
+	<delete id="deleteReply"
+		parameterType="com.sainjo.gooodhavi.sns.SNSReply">
+		delete from habit_sns_reply
+		where hsr_no = #{hsr_no}
+	</delete>
+	<select id="getAllMsgCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		habit_members, habit_sns
+		where h_nickname = hs_nickname
+	</select>
+	<select id="getSearchMsgCount"
+		parameterType="com.sainjo.gooodhavi.sns.SNSSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from habit_members, habit_sns
+		where h_nickname = hs_nickname
+		and (hs_contents like '%'||#{search}||'%'
+		or h_nickname like '%'||#{search}||'%')
+	</select>
+	<select id="getMsg"
+		parameterType="com.sainjo.gooodhavi.sns.SNSSelector"
+		resultType="com.sainjo.gooodhavi.sns.SNSMsg">
+		select * 
+		from (
+		select rownum as rn, h_pic, h_nickname, hs_contents, hs_date, hs_no
+		from (
+		select *
+		from habit_members, habit_sns
+		where h_nickname = hs_nickname
+		and (hs_contents like '%'||#{search}||'%'
+		or h_nickname like '%'||#{search}||'%')
+		order by hs_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getReply"
+		parameterType="com.sainjo.gooodhavi.sns.SNSMsg"
+		resultType="com.sainjo.gooodhavi.sns.SNSReply">
+		select *
+		from habit_sns_reply
+		where hsr_hs_no = #{hs_no}
+		order by hsr_when
+	</select>
+	<insert id="writeMsg" parameterType="com.sainjo.gooodhavi.sns.SNSMsg">
+		insert into habit_sns
+		values(habit_sns_seq.nextval, #{h_nickname},
+		#{hs_contents}, sysdate)
+	</insert>
+	<insert id="writeReply"
+		parameterType="com.sainjo.gooodhavi.sns.SNSReply">
+		insert into habit_sns_reply
+		values(habit_sns_reply_seq.nextval,
+		#{hsr_hs_no}, #{hsr_nickname}, #{hsr_contents}, sysdate)
+	</insert>
+	<update id="updateMsg"
+		parameterType="com.sainjo.gooodhavi.sns.SNSMsg">
+		update habit_sns
+		set hs_contents = #{hs_contents}
+		where hs_no = #{hs_no}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

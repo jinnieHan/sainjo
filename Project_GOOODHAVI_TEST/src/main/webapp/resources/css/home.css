@@ -1,0 +1,14 @@
+@charset "UTF-8";
+#wrapper {
+	margin-top: 200px;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bx-wrapper { /* 슬라이더 테두리의 그림자효과를 없애기 */
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 0;
+}

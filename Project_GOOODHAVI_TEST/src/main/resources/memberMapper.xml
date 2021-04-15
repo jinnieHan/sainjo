@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sainjo.gooodhavi.member.MemberMapper">
+<delete id="bye" parameterType="com.sainjo.gooodhavi.member.Member">
+		delete from habit_members 
+		where h_emailaddr = #{h_emailaddr}
+	</delete>
+
+	<select id="getMemberByNickname"
+		parameterType="com.sainjo.gooodhavi.member.Member"
+		resultType="com.sainjo.gooodhavi.member.Member">
+		select *
+		from habit_members
+		where h_emailaddr = #{h_emailaddr}
+	</select>
+
+	<insert id="join" parameterType="com.sainjo.gooodhavi.member.Member">
+		insert into habit_members values(#{h_nickname}, #{h_emailaddr}, #{h_password}, #{h_gen}, #{h_pic}, #{h_keyword})
+	</insert>
+
+	<update id="update"
+		parameterType="com.sainjo.gooodhavi.member.Member">
+		update habit_members
+		set h_password = #{h_password}, h_pic = #{h_pic}, h_keyword = #{h_keyword}
+		where h_emailaddr = #{h_emailaddr}
+	</update>
+</mapper>
