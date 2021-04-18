@@ -18,6 +18,13 @@
 		set h_check_date = sysdate, h_goal_date = #{h_goal_date} 
 		where h_habit_seq_no = #{h_habit_seq_no}
 	</update>
+	
+	<update parameterType="com.sainjo.gooodhavi.habit.Habit"
+		id="updateCompleteMyHabit">
+		update habit_habit 
+		set h_check_date = sysdate, h_end_date = sysdate, h_goal_date = #{h_goal_date}, h_status = 'E'
+		where h_habit_seq_no = #{h_habit_seq_no}
+	</update>
 
 	<update parameterType="com.sainjo.gooodhavi.habit.Habit"
 		id="giveupMyHabit">

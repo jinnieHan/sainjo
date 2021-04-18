@@ -58,7 +58,18 @@ public class HabitController {
 		if (mDAO.loginCheck(req)) {
 			hbDAO.updateMyHabit(hb, req);
 		}
-		habitGo(hb, req);
+		
+		if (hbDAO.getMyHabit(hb, req)) {
+			req.setAttribute("contentPage", "habit/myHabit.jsp");
+			hbDAO.getMyHabit(hb, req);
+		} else {
+			//습관 성공 종료 시 가는 페이지....
+			req.setAttribute("contentPage", "habit/gooodMyHabit.jsp");
+			//req.setAttribute("contentPage", "home.jsp");
+		}
+		
+		
+		//habitGo(hb, req);
 		return "index";
 	}
 	

@@ -10,6 +10,7 @@ create table habit_members(
 select * from HABIT_MEMBERS;
 
 insert into habit_members values('정임이', 'jinnie@gmail.com', '1', 'f', 'a.jpg', 'a');
+insert into habit_members values('test56', '피카츄', '1', 'f', 'a.jpg', 'a');
 
 
 select * from habit_members where h_nickname = 'a';

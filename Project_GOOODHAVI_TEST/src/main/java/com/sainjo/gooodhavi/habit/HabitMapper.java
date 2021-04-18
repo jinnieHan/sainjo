@@ -11,5 +11,7 @@ public interface HabitMapper {
 	
 	public abstract int updateMyHabit(Habit hb);
 	
+	public abstract int updateCompleteMyHabit(Habit hb);
+	
 	public abstract int giveupMyHabit(Habit hb);
 }
