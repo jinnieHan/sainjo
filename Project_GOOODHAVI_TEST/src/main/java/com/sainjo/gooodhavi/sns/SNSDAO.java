@@ -76,9 +76,6 @@ public class SNSDAO {
 		List<SNSMsg> snsMsgs = ss.getMapper(SNSMapper.class).getMsg(sSel);
 
 		for (SNSMsg snsMsg : snsMsgs) {
-			if (snsMsg.getH_nickname().contains("cjs") || snsMsg.getH_nickname().contains("ckd") || snsMsg.getH_nickname().contains("dnjs")) {
-				snsMsg.setH_pic("chun.png");
-			}
 			snsMsg.setReply(ss.getMapper(SNSMapper.class).getReply(snsMsg));
 		}
 		req.setAttribute("msgs", snsMsgs);
@@ -133,13 +130,16 @@ public class SNSDAO {
 			}
 		} catch (Exception e) {
 			req.setAttribute("r", "글쓰기실패");
+			e.printStackTrace();
 		}
 	}
 
 	public void writeReply(SNSReply sr, HttpServletRequest req) {
 		try {
 			String token = req.getParameter("token");
+			
 			String st2 = (String) req.getSession().getAttribute("st");
+			
 			if (st2 != null && token.equals(st2)) {
 				req.setAttribute("r", "댓글쓰기실패(새로고침)");
 				return;
@@ -147,7 +147,6 @@ public class SNSDAO {
 
 			Member m = (Member) req.getSession().getAttribute("loginMember");
 			sr.setHsr_nickname(m.getH_nickname());
-
 			if (ss.getMapper(SNSMapper.class).writeReply(sr) == 1) {
 				req.setAttribute("r", "댓글쓰기성공");
 				req.getSession().setAttribute("st", token);
@@ -156,6 +155,7 @@ public class SNSDAO {
 			}
 		} catch (Exception e) {
 			req.setAttribute("r", "댓글쓰기실패");
+			e.printStackTrace();
 		}
 	}
 }

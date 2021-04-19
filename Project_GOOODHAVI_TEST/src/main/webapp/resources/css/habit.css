@@ -1,4 +1,61 @@
 @charset "UTF-8";
-.margin {
-	height: 170px;
+
+#habitWelcomeTitle {
+	margin-top: 200px;
+	margin-bottom: 60px;
+	text-align: center;
+	font-size: 18pt;
+	color: #FF9969;
 }
+
+.newHabitBox {
+	width: 280px;
+	height: 110px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px 40px 30px 40px;
+	background-color: #DAE6EE;
+}	
+	
+.newHabitBox_word {
+	font-size: 13pt;
+	color: #1D313B;
+	font-weight: 600;
+	line-height: 15px;
+}
+	
+.newHabitBox input {
+	outline: none;
+	background-color: white;
+	border: none;
+	height: 20px;
+	width: 180px;
+}
+.newHabitBox_wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 120px;
+}
+	
+.newHabitBox button {
+	width: 120px;
+	height: 30px;
+	background-color: transparent;
+	border: #3E6C83 solid 1px;
+	color: #3E6C83;
+	font-size: 11pt;
+	line-height: 30px;
+	transition: all 1s ease;
+}
+
+.newHabitBox button:hover {
+	color: white;
+	font-size: 11pt;
+	line-height: 30px;
+	background-color: #3E6C83;
+}
+	
+	
+	
+	
+	

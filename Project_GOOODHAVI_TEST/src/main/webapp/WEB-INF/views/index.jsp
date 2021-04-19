@@ -7,12 +7,11 @@
 <title>GOOOD HAVI</title>
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/member.css">
-<link rel="stylesheet" href="resources/css/board.css">
+<link rel="stylesheet" href="resources/css/sns.css">
 <link rel="stylesheet" href="resources/css/habit.css">
 <link rel="stylesheet" href="resources/css/statistics.css">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
-<script type="text/javascript" src="resources/js/aqicn.js"></script>
 <script type="text/javascript" src="resources/js/go.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/dlbapmCheck.js"></script>

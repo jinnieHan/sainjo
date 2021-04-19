@@ -11,6 +11,13 @@
 		resultType="com.sainjo.gooodhavi.member.Member">
 		select *
 		from habit_members
+		where h_nickname = #{h_nickname}
+	</select>
+	<select id="getMemberByEmail"
+		parameterType="com.sainjo.gooodhavi.member.Member"
+		resultType="com.sainjo.gooodhavi.member.Member">
+		select *
+		from habit_members
 		where h_emailaddr = #{h_emailaddr}
 	</select>
 

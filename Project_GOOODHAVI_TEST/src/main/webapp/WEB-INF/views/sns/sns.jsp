@@ -12,7 +12,7 @@
 	<c:if test="${curPage != 1 }">
 		<table id="snsL">
 			<tr>
-				<td align="center" onmouseleave="snsPageChange(${curPage - 1 });">&lt;</td>
+				<td align="center" onclick="snsPageChange(${curPage - 1 });">&lt;</td>
 			</tr>
 		</table>
 	</c:if>
@@ -20,7 +20,7 @@
 	<c:if test="${curPage != allPageCount }">
 		<table id="snsR">
 			<tr>
-				<td align="center" onmouseleave="snsPageChange(${curPage + 1 });">&gt;</td>
+				<td align="center" onclick="snsPageChange(${curPage + 1 });">&gt;</td>
 			</tr>
 		</table>
 	</c:if>
@@ -41,7 +41,7 @@
 					</form>
 				</td>
 				<td id="snsWriteAreaSummoner" align="center" rowspan="2"
-					style="background-color: #F44336; border-radius: 0px 20px 20px 0px; cursor: pointer;">
+					style="background-color: #FF9969; border-radius: 0px 20px 20px 0px; cursor: pointer;">
 					<img src="resources/img/menu.png">
 				</td>
 			</tr>
@@ -99,7 +99,7 @@
 					<form action="sns.reply.write" method="post"
 						onsubmit="return snsWriteReplyCheck(this);">
 						<input name="token" value="${token }" type="hidden"> <input
-							name="dsr_ds_no" value="${sm.hs_no }" type="hidden"> <span
+							name="hsr_hs_no" value="${sm.hs_no }" type="hidden"> <span
 							class="smReplyID" style="">${sessionScope.loginMember.h_nickname }</span>
 						<input name="hsr_contents"
 							style="border-bottom: solid 2px;" maxlength="100"

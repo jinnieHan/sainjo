@@ -1,6 +1,7 @@
 $(function(){
 	menubarEvent();
 	//scrollMenubarEvent();
+	connectIdCheckEvent();
 });
 // 처음에 메뉴바 보여줌
 // 5초 후에 사라짐
