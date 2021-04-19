@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +21,15 @@ public class MemberDAO {
 	private SqlSession ss;
 
 	public Members nickNameCheck(Member m) {
-		// ID를 넣어서 select해온 회원 정보(하나)
-		m = ss.getMapper(MemberMapper.class).getMemberByNickname(m);
-		List<Member> mm = new ArrayList<Member>();
-		mm.add(m);
-		return new Members(mm);
+		return new Members(ss.getMapper(MemberMapper.class).getMemberByNickname(m));
+
 	}
+
+//	중복 이메일 체크
+	public Members memberEmailCheck(Member m) {
+		return new Members(ss.getMapper(MemberMapper.class).getMemberByEmail(m));
+	}
+
 //	
 	public void bye(HttpServletRequest req) {
 		try {
@@ -54,7 +55,6 @@ public class MemberDAO {
 		}
 	}
 
-	
 	public void join(Member m, HttpServletRequest req) {
 		String path = req.getSession().getServletContext().getRealPath("resources/img");
 		MultipartRequest mr = null;
@@ -67,11 +67,10 @@ public class MemberDAO {
 			// 이메일
 			m.setH_emailaddr(mr.getParameter("h_emailaddr"));
 			// 성별
-			System.out.println(mr.getParameter("h_gen"));
 			m.setH_gen(mr.getParameter("h_gen"));
 			// 사진
-			String h_pic = mr.getFilesystemName("h_pic"); 
-			String h_pic_kor = URLEncoder.encode(h_pic, "utf-8").replace("+", " "); 
+			String h_pic = mr.getFilesystemName("h_pic");
+			String h_pic_kor = URLEncoder.encode(h_pic, "utf-8").replace("+", " ");
 			m.setH_pic(h_pic_kor);
 			// 키워드
 			m.setH_keyword(mr.getParameter("h_keyword"));
@@ -90,24 +89,21 @@ public class MemberDAO {
 
 	}
 
-	public void login(Member inputM, HttpServletRequest req) {
-		try {
-			Member dbM = ss.getMapper(MemberMapper.class).getMemberByNickname(inputM);
-			if (dbM != null) {
-				if (dbM.getH_password().equals(inputM.getH_password())) {
-					// dbM : 로그인 된 사람 전체 정보
-					// 사이트에서 어딜 가든지 저 정보가 살아있어야
-					// 화장실 갔다오면 없어져야
-					req.getSession().setAttribute("loginMember", dbM);
-					req.getSession().setMaxInactiveInterval(10 * 60);
-				} else {
-					req.setAttribute("r", "로그인실패(PW오류)");
-				}
-			} else {
-				req.setAttribute("r", "로그인실패(미가입ID)");
-			}
-		} catch (Exception e) {
-			req.setAttribute("r", "로그인실패(DB서버문제)");
+	public void login(Member m, HttpServletRequest req) {
+		String h_emailaddr = m.getH_emailaddr();
+		System.out.println(h_emailaddr);
+		String h_password = m.getH_password();
+		System.out.println(h_password);
+		
+		List<Member> members = ss.getMapper(MemberMapper.class).getMemberByEmail(m);
+		if (members.size() == 0) {
+			System.out.println("로그인실패");
+		} else if (h_emailaddr.equals(members.get(0).getH_emailaddr())
+					|| h_password.equals(members.get(0).getH_password())) {
+			m = members.get(0);
+			req.getSession().setAttribute("loginMember", m);
+			req.getSession().setMaxInactiveInterval(10 * 10);
+
 		}
 	}
 

@@ -1,109 +1,123 @@
 @charset "UTF-8";
-
-#loginTbl input {
-	margin-left: 15px;
-	padding-left: 5px;
-	border: #3E6C83 solid 3px;
-	width: 130px;
-	background-color: transparent;
-	color: #3E6C83;
-	height: 25px;
-	font-family: "b";
-	border: white solid 3px;
-}
-
-#loginTbl input::placeholder {
-	color: #3E6C83;
-	font-family: "a";
-}
-
-#loginTbl button {
-	margin-left: 15px;
-	border: none;
-	background-color: transparent;
-	color: 3E6C83;
-	height: 25px;
-	font-family: "a";
-	font-weight: 900;
-	font-size: 14pt;
-}
-#loginTbl button:hover{
-	text-shadow: 0px 0px 5px #3E6C83;
-}
-#joinTbl {
-	width: 70%;
-	border-spacing: 3px;
-}
-
-#joinTbl td {
-	background-color: #FFFFFF77;
-	border-radius: 10px;
-}
-
-#joinTbl input {
-	font-family: "c";
-	border: none;
-	background-color: transparent;
-	height: 47px;
-	padding: 10px;
-	font-size: 17pt;
-	font-weight: 900;
-}
-
-#joinTbl input::placeholder {
+.joinTitle{
+	font-size: 50pt;
 	color: black;
+	text-align: center;
+	height: 80px;
+}
+.bigJoinBox{
+	width: 910px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	
+}
+.joinBox{
+	width: 910px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+}
+fieldset {
+	margin-top: 5px;
+	margin-left: 0px;
+	border: black solid 2px;	
+	width: 900px;
+	padding-bottom: 5px; 
+	margin-bottom: 10px;
 }
 
-#joinTbl .width100 {
-	width: 99%;
+#fieldLegend {
+	font-size: 40pt;
+}
+#h_picField {
+	height: 200px;
 }
 
-#joinTbl th {
-	color: #3E6C83;
-	font-family: "a";
-	font-size: 30pt;
-	height: 60px;
-}
-
-#addrSearchBtn {
-	font-family: "c";
-	font-size: 17pt;
-	font-weight: 900;
+#h_nicknameBT, #h_nicknameBT:hover, #h_emailaddrBT, #h_emailaddrBT:hover {
+	outline: none;
 	cursor: pointer;
+	width:115px;
+	border: black dotted 2px;
+	font-size : 20pt;
+	align-content:center;
+	margin-left: 750px;
+	margin-bottom: 20px;
 }
-
-#joinTbl button {
-	background-color: transparent;
-	border: #3E6C83 solid 5px;
-	font-family: "b";
-	font-size: 23pt;
-	width: 99%;
-	height: 70px;
-	border-radius: 10px;
-}
-
-#joinTbl button:hover {
-	background-color: #FFFFFF77;
-}
-#loginMemberImg{
-	height: 40px;
-	box-shadow: 3px 3px 3px #3E6C83;
-	border-radius: 5px;
-}
-#loginMemberID{
-	font-family: "a";
-	color:#3E6C83;
+.joinBox input {
+	width: 400px;
+	height: 50px;
+	margin-bottom: 10px;
+    font-size: 25pt;
+	color: #878787;
+	line-height: 12pt;
 	padding-left: 10px;
-	padding-right: 10px;
-	font-size: 14pt;
 }
-.loginMemberBtn{
-	background-color: transparent;
-	border:none;
-	font-family: "b";
-	color:#3E6C83;
-	font-size: 15pt;
+
+
+#h_emailaddr2 {
+    background: url("resources/img/select_pointer.png") no-repeat ;
+	background-color: white;
+	width: 350px;
+	height: 50px;
+	padding-left: 10px;
+	padding-right: 20px;
+    font-size: 25px;
+    border: black dotted 2px;
+	color: #878787;
+	line-height: 36px;
+    border-radius: 0px; 
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    align-content: center;
+
 }
-.loginMemberBtn:hover{
-	text-shadow: 0px 0px 5px #3E6C83;
+
+select::-ms-expand {
+    display: none;
 }
+
+#radio_g1, #radio_g2, #radio_g3 {
+	font-size: 25pt;
+	line-height: 30px;
+	width: 150px;
+	height: 30px;
+	text-align: left;
+}
+#radio_k1, #radio_k2, #radio_k3, #radio_k4, #radio_k5, #radio_k6 {
+	font-size: 25pt;
+	line-height: 30px;
+	width: 150px;
+	height: 30px;
+	text-align: left;
+}
+.joinBox button {
+	width: 250px;
+	height: 100px;
+	background-color: #5b94ea;
+	color: white;
+	font-size: 35pt;
+	outline: none;
+	border: none;
+	transition: all 1s ease;
+}
+.joinBox button:hover{
+	cursor: pointer;
+	text-decoration: underline;
+	background-color: #0751cc;
+}
+
+
+
+
+
+
+
+
+
+
+
+

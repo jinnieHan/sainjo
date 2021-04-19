@@ -7,63 +7,78 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="joinTbl">
-		<form action="member.update" method="post"
-			enctype="multipart/form-data" name="memberUpdateForm"
+	<div class="joinBox">
+		
+		<form action="member.update" method="post" enctype="multipart/form-data" name="memberUpdateForm"
 			onsubmit="return memberUpdateCheck();">
-			<tr>
-				<th colspan="2"><input name="h_nickname"
-					value="${sessionScope.loginMember.h_nickname }" class="width100"
-					readonly="readonly"
-					style="text-align: center; font-size: 20pt; color: white;"></th>
-			</tr>
-			<tr>
-				<th colspan="2"><input name="h_emailaddr"
-					value="${sessionScope.loginMember.h_emailaddr }"
-					readonly="readonly" class="width100" placeholder="PW"
-					maxlength="30" autocomplete="off"></th>
-			</tr>
-			<tr>
-				<th colspan="2"><input name="h_gen"
-					value="${sessionScope.loginMember.h_gen }" class="width100"
-					maxlength="10" autocomplete="off" readonly="readonly"></th>
-			</tr>
-			<tr>
-				<td colspan="2"><input name="h_password"
-					value="${sessionScope.loginMember.h_password }" class="width100"
-					type="password" placeholder="PW" maxlength="10" autocomplete="off">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2"><input name="h_pwCh"
-					value="${sessionScope.loginMember.h_password }" class="width100"
-					type="password" placeholder="PW확인" maxlength="10"
-					autocomplete="off"></td>
-			</tr>
-			<tr>
-				<td  colspan="2"
-					style="font-family: 'c'; font-size: 17pt; padding-left: 10px; padding-top: 13px; font-weight: 900;">
+			<div align="center">
+				<fieldset>
+					<legend id="fieldLegend">닉네임</legend>
 					<img src="resources/img/${sessionScope.loginMember.h_pic }"
-					style="max-width: 30%; box-shadow: 3px 3px 3px black;"> <input
-					name="h_pic" type="file" autocomplete="off">
-				</td>
-			</tr>
-			<tr>
-				<td align="center" style="width: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;키워드</td>
-				<td><input name="h_keyword" type="radio" value="s"checked="checked">운동&nbsp;&nbsp; 
-					<input name="h_keyword" type="radio" value="m">독서&nbsp;&nbsp; 
-					<input name="h_keyword" type="radio" value="m">생활습관&nbsp;&nbsp; 
-					<input name="h_keyword" type="radio" value="m">학습&nbsp;&nbsp; 
-					<input name="h_keyword" type="radio" value="m">취미&nbsp;&nbsp;
-					<input name="h_keyword" type="radio" value="m">돈관리</td>
-			</tr>
-		<tr>
-			<th colspan="2" style="padding-top: 10px; padding-bottom: 10px;">
-				<button style="width: 45%;">수정</button>&nbsp;
+					style="max-width: 30%; box-shadow: 3px 3px 3px black; align-content: center;">
+						<input id="h_nickname" name="h_nickname" readonly="readonly" 
+						value="${sessionScope.loginMember.h_nickname }"
+						style="width:500px; height:auto; 
+						text-align: center; font-size: 70pt; color: black; 
+						border: none; outline: none; align-items: center;">
+				</fieldset>
+			</div>
+			<div align="center">
+				<fieldset>
+					<legend id="fieldLegend">이메일</legend>
+						<input id="h_nickname" name="h_nickname" readonly="readonly" 
+						value="${sessionScope.loginMember.h_emailaddr }"
+						style="width:500px; height:auto; 
+						text-align: center; font-size: 70pt; color: black; 
+						border: none; outline: none;">
+				</fieldset>
+			</div>
+			<div align="center">
+				<fieldset>
+					<legend id="fieldLegend">성별</legend>
+						<input id="h_nickname" name="h_nickname" readonly="readonly" 
+						value="${sessionScope.loginMember.h_gen }"
+						style="width:500px; height:auto; 
+						text-align: center; font-size: 70pt; color: black; 
+						border: none; outline: none;">
+				</fieldset>
+			</div>
+			<div align="left">
+				<fieldset>
+					<legend id="fieldLegend">비밀번호</legend>
+						<input class="" name="h_password" autocomplete="off" type="password"
+							placeholder="비밀번호" maxlength="18"value="${sessionScope.loginMember.h_password }"> 
+						<input class="" name="h_pwCh" autocomplete="off" type="password"
+							placeholder="비번 재확인" maxlength="18"value="${sessionScope.loginMember.h_password }">
+				</fieldset>
+			</div>
+			<div align="left">
+				<fieldset id="h_picField" >
+					<legend id="fieldLegend">사진</legend>
+						<input name="h_pic" type="file" autocomplete="off">
+				</fieldset>
+			</div>
+			<div align="center">
+				<fieldset>
+					<legend id="fieldLegend">습관 재설정 하기</legend>
+					<input id="radio_k1" name="h_keyword" type="radio" value="workout" checked="checked">
+					<label for="radio_k1" style="font-size: 25pt;">운동 </label>
+					<input id="radio_k2" name="h_keyword" type="radio" value="book">
+					<label for="radio_k2" style="font-size: 25pt;">독서 </label>
+					<input id="radio_k3" name="h_keyword" type="radio" value="habit">
+					<label for="radio_k3" style="font-size: 25pt;">생활습관</label>
+					<input id="radio_k4" name="h_keyword" type="radio" value="study">
+					<label for="radio_k4" style="font-size: 25pt;">학습 </label>
+					<input id="radio_k5" name="h_keyword" type="radio" value="hobby">
+					<label for="radio_k5" style="font-size: 25pt;">취미 </label>
+					<input id="radio_k6" name="h_keyword" type="radio" value="money">
+					<label for="radio_k6" style="font-size: 25pt;">돈관리</label>
+				</fieldset>
+			</div>
+				<button style="width: 45%;">수정</button>&nbsp; <p>
 		</form>
 		<button onclick="bye();" style="width: 45%;">탈퇴</button>
-		</th>
-		</tr>
-	</table>
+	</div>
+		
 </body>
 </html>

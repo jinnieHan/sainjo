@@ -1,6 +1,7 @@
 package com.sainjo.gooodhavi.member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,13 @@ public class MemberController {
 	public @ResponseBody Members memberNicknameCheck(Member m) {
 		return mDAO.nickNameCheck(m);
 	}
+	
+//	아이디 체크하기
+	@RequestMapping(value = "/member.email.check", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	public @ResponseBody Members memberGetJSON(HttpServletRequest request, HttpServletResponse res, Member m) {
+		return mDAO.memberEmailCheck(m);
+	}
+	
 
 	@RequestMapping(value = "/member.bye", method = RequestMethod.GET)
 	public String memberBye(HttpServletRequest req) {
